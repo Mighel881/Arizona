@@ -18,8 +18,15 @@
 static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonaprefs.plist";
 
 
+static BOOL alternatePosition;
 static BOOL poggers;
 static int style;
+
+
+
+
+CGFloat coordinatesForX;
+CGFloat coordinatesForY;
 
 
 
@@ -30,6 +37,11 @@ static void loadWithoutAFuckingRespring() {
 	NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
     poggers = prefs[@"poggers"] ? [prefs[@"poggers"] boolValue] : NO;
     style = prefs[@"style"] ? [prefs[@"style"] integerValue] : 2;
+    alternatePosition = prefs[@"alternatePosition"] ? [prefs[@"alternatePosition"] boolValue] : NO;
+    int xValue = prefs[@"xValue"] ? [prefs[@"xValue"] intValue] : 1;
+	coordinatesForX = (float)xValue;
+	int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
+	coordinatesForY = (float)yValue;
 
 }
 
@@ -75,11 +87,46 @@ static void loadWithoutAFuckingRespring() {
 
 
 
+%hook SBFLockScreenDateView
+
+
+-(void)setFrame:(CGRect)frame {
+
+
+    if(alternatePosition) {
+
+
+        CGRect newFrame = CGRectMake(coordinatesForX, coordinatesForY, frame.size.width, frame.size.height);
+
+
+        %orig(newFrame);
+        
+
+    } else
+
+
+        %orig;
+        loadWithoutAFuckingRespring();
+
+
+}
+
+
+%end
+
+
+
+
 %ctor {
 
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
 	NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
     poggers = prefs[@"poggers"] ? [prefs[@"poggers"] boolValue] : NO;
     style = prefs[@"style"] ? [prefs[@"style"] integerValue] : 2;
+    alternatePosition = prefs[@"alternatePosition"] ? [prefs[@"alternatePosition"] boolValue] : NO;
+    int xValue = prefs[@"xValue"] ? [prefs[@"xValue"] intValue] : 1;
+	coordinatesForX = (float)xValue;
+	int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
+	coordinatesForY = (float)yValue;
 
 }

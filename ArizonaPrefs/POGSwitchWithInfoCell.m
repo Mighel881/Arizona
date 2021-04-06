@@ -1,6 +1,15 @@
 #import "POGSwitchWithInfoCell.h"
 
+
+
+
+#define tint [UIColor colorWithRed: 0.02 green: 0.79 blue: 0.95 alpha: 1.00]
+
+
+
+
 @implementation POGSwitchWithInfoCell {
+
   UIButton *_infoButton;
 }
 
@@ -41,14 +50,14 @@
   -(void)tintColorDidChange {
     [super tintColorDidChange];
 
-    _infoButton.tintColor = self.tintColor;
+    _infoButton.tintColor = tint;
   }
 
   -(void)refreshCellContentsWithSpecifier:(PSSpecifier *)specifier {
     [super refreshCellContentsWithSpecifier:specifier];
 
     if([self respondsToSelector:@selector(tintColor)]) {
-      _infoButton.tintColor = self.tintColor;
+      _infoButton.tintColor = tint;
     }
   }
 @end

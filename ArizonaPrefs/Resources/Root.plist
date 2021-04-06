@@ -2,20 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>items</key>	
+	<key>items</key>
 	<array>
-		<!--<dict>
-			<key>cell</key>
-			<string>PSSwitchCell</string>
-			<key>default</key>
-			<false/>
-			<key>defaults</key>
-			<string>com.luki.arizonaprefs</string>
-			<key>key</key>
-			<string>poggers</string>
-			<key>label</key>
-			<string>Poggers</string>
-		</dict>-->
 		<dict>
 		<key>cell</key>
 		<string>PSSwitchCell</string>
@@ -32,7 +20,7 @@
 		<key>key</key>
 		<string>poggers</string>
 		<key>label</key>
-		<string>Poggers</string>
+		<string>Enable</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -66,7 +54,77 @@
 		</dict>
 		<dict>
 			<key>cell</key>
+			<string>PSSwitchCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.luki.arizonaprefs</string>
+			<key>key</key>
+			<string>alternatePosition</string>
+			<key>label</key>
+			<string>Custom Position</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>X Axis</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.luki.arizonaprefs</string>
+			<key>key</key>
+			<string>xValue</string>
+			<key>min</key>
+			<real>-500.0</real>
+			<key>max</key>
+			<real>500.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isSegmented</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSStaticTextCell</string>
+			<key>label</key>
+			<string>Y Axis</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSSliderCell</string>
+			<key>default</key>
+			<real>1</real>
+			<key>defaults</key>
+			<string>com.luki.arizonaprefs</string>
+			<key>key</key>
+			<string>yValue</string>
+			<key>min</key>
+			<real>-500.0</real>
+			<key>max</key>
+			<real>500.0</real>
+			<key>showValue</key>
+			<true/>
+			<key>isSegmented</key>
+			<true/>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
 			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>ArizonaTableCell</string>
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
@@ -85,6 +143,8 @@
 		<dict>
 			<key>cell</key>
 			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>ArizonaTableCell</string>
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
@@ -97,6 +157,8 @@
 		<dict>
 			<key>cell</key>
 			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>ArizonaTableCell</string>
 			<key>default</key>
 			<false/>
 			<key>defaults</key>
