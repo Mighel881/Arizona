@@ -2,8 +2,8 @@ Package: com.luki.arizona
 Name: Arizona
 Version: 1.0
 Architecture: iphoneos-arm
-Description: Align lockscreen clock to the right because is pog and I like it.
+Description: ;)
 Maintainer: Luki
 Author: Luki
 Section: Tweaks
-Depends: mobilesubstrate
+Depends: mobilesubstrate, preferenceloader
