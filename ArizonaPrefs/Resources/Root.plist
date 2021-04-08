@@ -14,7 +14,7 @@
 		<key>infoMessage</key>
 		<string>NONE of the changes require respring and apply dynamically, pretty great huh?</string>
 		<key>default</key>
-		<true/>
+		<false/>
 		<key>defaults</key>
 		<string>com.luki.arizonaprefs</string>
 		<key>key</key>
@@ -63,6 +63,8 @@
 			<string>alternatePosition</string>
 			<key>label</key>
 			<string>Custom Position</string>
+			<!--<key>id</key>
+			<string>SWITCH_ID</string>-->
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -73,7 +75,9 @@
 			<string>PSStaticTextCell</string>
 			<key>label</key>
 			<string>X Axis</string>
-		</dict>
+			<!--<key>id</key>
+			<string>CELL_ID</string>-->
+		</dict>	
 		<dict>
 			<key>cell</key>
 			<string>PSSliderCell</string>
@@ -119,6 +123,22 @@
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSLinkCell</string>
+			<key>cellClass</key>
+			<string>ArizonaTableCell</string>
+			<key>detail</key>
+			<string>ContributorsRootListController</string>
+			<key>isController</key>
+			<true/>
+			<key>label</key>
+			<string>Contributors</string>
+		</dict>
+		<dict>
+		<key>cell</key>
+		<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>

@@ -12,11 +12,21 @@
 
 
 @interface ARIRootListController : PSListController
+@property (nonatomic, retain) NSMutableDictionary *savedSpecifiers;
 @property (nonatomic, retain) UILabel *titleLabel;
 @property (nonatomic, retain) UIView *headerView;
 @property (nonatomic, retain) UIImageView *headerImageView;
 @property (nonatomic, retain) UIImageView *iconView;
 -(void)loadWithoutAFuckingRespring;
+@end
+
+
+@interface PSListController (Private)
+-(BOOL)containsSpecifier:(PSSpecifier *)arg1;
+@end
+
+
+@interface ContributorsRootListController : PSListController
 @end
 
 

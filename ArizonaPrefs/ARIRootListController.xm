@@ -40,16 +40,39 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
-	}
+		/*NSArray *chosenIDs = @[@"CELL_ID"];
+		self.savedSpecifiers = (self.savedSpecifiers) ?: [[NSMutableDictionary alloc] init];
+		for(PSSpecifier *specifier in _specifiers) {
+			if([chosenIDs containsObject:[specifier propertyForKey:@"id"]]) {
+				[self.savedSpecifiers setObject:specifier forKey:[specifier propertyForKey:@"id"]];
+			}
+		}*/
+    }
 
-	return _specifiers;
+return _specifiers;
+
 }
 
+
+/*-(void)reloadSpecifiers {
+		[super reloadSpecifiers];
+		[self toggleSpecifiersVisibility:NO];
+}
+
+
+-(void)toggleSpecifiersVisibility:(BOOL)animated {
+		NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/User/Library/Preferences/com.luki.arizonaprefs.plist"];
+		if([prefs[@"alternatePosition"] boolValue]) {
+			[self removeSpecifier:self.savedSpecifiers[@"CELL_ID"] animated:animated];
+		} 	else if(![self containsSpecifier:self.savedSpecifiers[@"CELL_ID"]]) {
+				[self insertSpecifier:self.savedSpecifiers[@"CELL_ID"] afterSpecifierID:@"SWITCH_ID" animated:animated];
+	}
+}*/
 
 -(void)viewDidLoad {
 
 	[super viewDidLoad];
-
+	//[self toggleSpecifiersVisibility:NO];
 	UIImage *banner = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/ArizonaPrefs.bundle/pogbanner.png"];
 	
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width,UIScreen.mainScreen.bounds.size.width * banner.size.height / banner.size.width)];
@@ -57,7 +80,23 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
     self.headerImageView.contentMode = UIViewContentModeScaleAspectFill;
     self.headerImageView.image = banner;
     self.headerImageView.translatesAutoresizingMaskIntoConstraints = NO;
-    //self.headerImageView.clipsToBounds = YES;
+
+	self.navigationItem.titleView = [UIView new];
+    self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
+    self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.titleLabel.text = @"1.0";
+    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.textAlignment = NSTextAlignmentCenter;
+    [self.navigationItem.titleView addSubview:self.titleLabel];
+
+    self.iconView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,10,10)];
+    self.iconView.contentMode = UIViewContentModeScaleAspectFit;
+    self.iconView.image = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/ArizonaPrefs.bundle/icon@2x.png"];
+    self.iconView.translatesAutoresizingMaskIntoConstraints = NO;
+    self.iconView.alpha = 0.0;
+    [self.navigationItem.titleView addSubview:self.iconView];
+    
 
     [self.headerView addSubview:self.headerImageView];
     [NSLayoutConstraint activateConstraints:@[
@@ -65,6 +104,14 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
         [self.headerImageView.leadingAnchor constraintEqualToAnchor:self.headerView.leadingAnchor],
         [self.headerImageView.trailingAnchor constraintEqualToAnchor:self.headerView.trailingAnchor],   
         [self.headerImageView.bottomAnchor constraintEqualToAnchor:self.headerView.bottomAnchor],
+		[self.titleLabel.topAnchor constraintEqualToAnchor:self.navigationItem.titleView.topAnchor],
+        [self.titleLabel.leadingAnchor constraintEqualToAnchor:self.navigationItem.titleView.leadingAnchor],
+        [self.titleLabel.trailingAnchor constraintEqualToAnchor:self.navigationItem.titleView.trailingAnchor],
+        [self.titleLabel.bottomAnchor constraintEqualToAnchor:self.navigationItem.titleView.bottomAnchor],
+        [self.iconView.topAnchor constraintEqualToAnchor:self.navigationItem.titleView.topAnchor],
+        [self.iconView.leadingAnchor constraintEqualToAnchor:self.navigationItem.titleView.leadingAnchor],
+        [self.iconView.trailingAnchor constraintEqualToAnchor:self.navigationItem.titleView.trailingAnchor],
+        [self.iconView.bottomAnchor constraintEqualToAnchor:self.navigationItem.titleView.bottomAnchor],
     ]];
 
 }
@@ -125,6 +172,9 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 
 
 -(void)setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
+
+    //[super setPreferenceValue:value specifier:specifier];
+	//[self toggleSpecifiersVisibility:YES];
 	
 	NSMutableDictionary *settings = [NSMutableDictionary dictionary];
 	[settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:plistPath]];
@@ -163,6 +213,47 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 
 }
 
+@end
+
+
+
+
+@implementation ContributorsRootListController
+
+- (NSArray *)specifiers {
+	if (!_specifiers) {
+		_specifiers = [self loadSpecifiersFromPlistName:@"Contributors" target:self];
+	}
+
+	return _specifiers;
+}
+
+
+-(void)luki {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://twitter.com/Lukii120"] options:@{} completionHandler:nil];
+
+
+}
+
+
+-(void)ben {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://twitter.com/BenOwl3"] options:@{} completionHandler:nil];
+
+
+}
+
+
+-(void)lacertosus {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://twitter.com/lacertosusdeus"] options:@{} completionHandler:nil];
+
+
+}
 
 @end
 
