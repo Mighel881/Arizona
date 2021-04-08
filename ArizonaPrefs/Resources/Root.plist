@@ -63,8 +63,8 @@
 			<string>alternatePosition</string>
 			<key>label</key>
 			<string>Custom Position</string>
-			<!--<key>id</key>
-			<string>SWITCH_ID</string>-->
+			<key>id</key>
+			<string>SWITCH_ID</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -75,8 +75,8 @@
 			<string>PSStaticTextCell</string>
 			<key>label</key>
 			<string>X Axis</string>
-			<!--<key>id</key>
-			<string>CELL_ID</string>-->
+			<key>id</key>
+			<string>XAxisID</string>
 		</dict>	
 		<dict>
 			<key>cell</key>
@@ -95,12 +95,16 @@
 			<true/>
 			<key>isSegmented</key>
 			<true/>
+			<key>id</key>
+			<string>XValueID</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
 			<string>Y Axis</string>
+			<key>id</key>
+			<string>YAxisID</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -119,6 +123,8 @@
 			<true/>
 			<key>isSegmented</key>
 			<true/>
+			<key>id</key>
+			<string>YValueID</string>
 		</dict>
 		<dict>
 			<key>cell</key>

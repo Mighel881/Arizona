@@ -40,13 +40,13 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
-		/*NSArray *chosenIDs = @[@"CELL_ID"];
+		NSArray *chosenIDs = @[@"CELL_ID", @ ];
 		self.savedSpecifiers = (self.savedSpecifiers) ?: [[NSMutableDictionary alloc] init];
 		for(PSSpecifier *specifier in _specifiers) {
 			if([chosenIDs containsObject:[specifier propertyForKey:@"id"]]) {
 				[self.savedSpecifiers setObject:specifier forKey:[specifier propertyForKey:@"id"]];
 			}
-		}*/
+		}
     }
 
 return _specifiers;

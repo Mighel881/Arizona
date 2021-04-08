@@ -2,7 +2,7 @@ include $(THEOS)/makefiles/common.mk
 
 BUNDLE_NAME = ArizonaPrefs
 
-ArizonaPrefs_FILES = ARIRootListController.xm POGSwitchWithInfoCell.m
+ArizonaPrefs_FILES = ARIRootListController.m POGSwitchWithInfoCell.m
 ArizonaPrefs_FRAMEWORKS = UIKit
 ArizonaPrefs_PRIVATE_FRAMEWORKS = Preferences
 ArizonaPrefs_INSTALL_PATH = /Library/PreferenceBundles
