@@ -40,7 +40,7 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
-		NSArray *chosenIDs = @[@"CELL_ID", @ ];
+		NSArray *chosenIDs = @[@"GroupCell-1", @"SegmentCell", @"GroupCell-3", @"XAxisID", @"XValueID", @"YAxisID", @"YValueID"];
 		self.savedSpecifiers = (self.savedSpecifiers) ?: [[NSMutableDictionary alloc] init];
 		for(PSSpecifier *specifier in _specifiers) {
 			if([chosenIDs containsObject:[specifier propertyForKey:@"id"]]) {
@@ -54,25 +54,32 @@ return _specifiers;
 }
 
 
-/*-(void)reloadSpecifiers {
-		[super reloadSpecifiers];
-		[self toggleSpecifiersVisibility:NO];
+-(void)reloadSpecifiers {
+
+    [super reloadSpecifiers];
+
+    if (![[self readPreferenceValue:[self specifierForID:@"SWITCH_ID-1"]] boolValue]) {
+        [self removeSpecifier:self.savedSpecifiers[@"GroupCell-1"] animated:NO];
+        [self removeSpecifier:self.savedSpecifiers[@"SegmentCell"] animated:NO];
+    } 
+    else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-1"]]) {
+        [self insertSpecifier:self.savedSpecifiers[@"GroupCell-1"] afterSpecifierID:@"SWITCH_ID-1" animated:NO];
+        [self insertSpecifier:self.savedSpecifiers[@"SegmentCell"] afterSpecifierID:@"GroupCell-1" animated:NO];
+    
+    }  
+    if (![[self readPreferenceValue:[self specifierForID:@"SWITCH_ID-2"]] boolValue]) {
+        [self removeContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-3"], self.savedSpecifiers[@"XAxisID"], self.savedSpecifiers[@"XValueID"], self.savedSpecifiers[@"YAxisID"], self.savedSpecifiers[@"YValueID"]] animated:NO];
+    } 
+    else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-3"]]) {
+        [self insertContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-3"], self.savedSpecifiers[@"XAxisID"], self.savedSpecifiers[@"XValueID"], self.savedSpecifiers[@"YAxisID"], self.savedSpecifiers[@"YValueID"]] afterSpecifierID:@"SWITCH_ID-2" animated:NO];
+    }
 }
 
-
--(void)toggleSpecifiersVisibility:(BOOL)animated {
-		NSDictionary *prefs = [NSDictionary dictionaryWithContentsOfFile:@"/User/Library/Preferences/com.luki.arizonaprefs.plist"];
-		if([prefs[@"alternatePosition"] boolValue]) {
-			[self removeSpecifier:self.savedSpecifiers[@"CELL_ID"] animated:animated];
-		} 	else if(![self containsSpecifier:self.savedSpecifiers[@"CELL_ID"]]) {
-				[self insertSpecifier:self.savedSpecifiers[@"CELL_ID"] afterSpecifierID:@"SWITCH_ID" animated:animated];
-	}
-}*/
 
 -(void)viewDidLoad {
 
 	[super viewDidLoad];
-	//[self toggleSpecifiersVisibility:NO];
+	[self reloadSpecifiers];
 	UIImage *banner = [UIImage imageWithContentsOfFile:@"/Library/PreferenceBundles/ArizonaPrefs.bundle/pogbanner.png"];
 	
     self.headerView = [[UIView alloc] initWithFrame:CGRectMake(0,0,UIScreen.mainScreen.bounds.size.width,UIScreen.mainScreen.bounds.size.width * banner.size.height / banner.size.width)];
@@ -172,20 +179,40 @@ return _specifiers;
 
 
 -(void)setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
+    
+    NSMutableDictionary *settings = [NSMutableDictionary dictionary];
+    [settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:plistPath]];
+    [settings setObject:value forKey:specifier.properties[@"key"]];
+    [settings writeToFile:plistPath atomically:YES];
+    CFStringRef notificationName = (__bridge CFStringRef)specifier.properties[@"PostNotification"];
+    if (notificationName) {
+        [self loadWithoutAFuckingRespring];
+    }
 
-    //[super setPreferenceValue:value specifier:specifier];
-	//[self toggleSpecifiersVisibility:YES];
-	
-	NSMutableDictionary *settings = [NSMutableDictionary dictionary];
-	[settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:plistPath]];
-	[settings setObject:value forKey:specifier.properties[@"key"]];
-	[settings writeToFile:plistPath atomically:YES];
-	CFStringRef notificationName = (__bridge CFStringRef)specifier.properties[@"PostNotification"];
-	if (notificationName) {
-		[self loadWithoutAFuckingRespring];
-	}
+    NSString *key = [specifier propertyForKey:@"key"];
+
+    if([key isEqualToString:@"poggers"]) {
+        
+        if (![value boolValue]) {
+            [self removeSpecifier:self.savedSpecifiers[@"GroupCell-1"] animated:YES];
+            [self removeSpecifier:self.savedSpecifiers[@"SegmentCell"] animated:YES];
+        } 
+        else if (![self containsSpecifier:self.savedSpecifiers[@"SegmentCell"]]) {
+            [self insertSpecifier:self.savedSpecifiers[@"GroupCell-1"] afterSpecifierID:@"SWITCH_ID-1" animated:YES];
+            [self insertSpecifier:self.savedSpecifiers[@"SegmentCell"] afterSpecifierID:@"GroupCell-1" animated:YES];
+        }
+    }
+
+    if([key isEqualToString:@"alternatePosition"]) {
+        
+        if (![value boolValue]) {
+            [self removeContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-3"], self.savedSpecifiers[@"XAxisID"], self.savedSpecifiers[@"XValueID"], self.savedSpecifiers[@"YAxisID"], self.savedSpecifiers[@"YValueID"]] animated:YES];
+        } 
+        else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-3"]]) {
+            [self insertContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-3"], self.savedSpecifiers[@"XAxisID"], self.savedSpecifiers[@"XValueID"], self.savedSpecifiers[@"YAxisID"], self.savedSpecifiers[@"YValueID"]] afterSpecifierID:@"SWITCH_ID-2" animated:YES];
+        }
+    }
 }
-
 
 -(void)discord {
 

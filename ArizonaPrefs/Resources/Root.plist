@@ -5,27 +5,31 @@
 	<key>items</key>
 	<array>
 		<dict>
-		<key>cell</key>
-		<string>PSSwitchCell</string>
-		<key>cellClass</key>
-		<string>POGSwitchWithInfoCell</string>
-		<key>infoTitle</key>
-		<string></string>
-		<key>infoMessage</key>
-		<string>NONE of the changes require respring and apply dynamically, pretty great huh?</string>
-		<key>default</key>
-		<false/>
-		<key>defaults</key>
-		<string>com.luki.arizonaprefs</string>
-		<key>key</key>
-		<string>poggers</string>
-		<key>label</key>
-		<string>Enable</string>
+            <key>cell</key>
+            <string>PSSwitchCell</string>
+            <key>cellClass</key>
+            <string>POGSwitchWithInfoCell</string>
+            <key>infoTitle</key>
+            <string></string>
+            <key>infoMessage</key>
+            <string>NONE of the changes require respring and apply dynamically, pretty great huh?</string>
+            <key>default</key>
+            <false/>
+            <key>defaults</key>
+            <string>com.luki.arizonaprefs</string>
+            <key>key</key>
+            <string>poggers</string>
+            <key>label</key>
+            <string>Enable</string>
+         	<key>id</key>
+            <string>SWITCH_ID-1</string>
 		</dict>
-		<dict>
-			<key>cell</key>
-			<string>PSGroupCell</string>
-		</dict>
+        <dict>
+            <key>cell</key>
+            <string>PSGroupCell</string>
+			<key>id</key>
+            <string>GroupCell-1</string>
+        </dict>
 		<dict>
             <key>cell</key>
             <string>PSSegmentCell</string>
@@ -47,6 +51,8 @@
                 <string>Center</string>
                 <string>Right</string>
             </array>
+			<key>id</key>
+            <string>SegmentCell</string>
         </dict>
 		<dict>
 			<key>cell</key>
@@ -64,11 +70,13 @@
 			<key>label</key>
 			<string>Custom Position</string>
 			<key>id</key>
-			<string>SWITCH_ID</string>
+            <string>SWITCH_ID-2</string> 
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSGroupCell</string>
+			<key>id</key>
+            <string>GroupCell-3</string>
 		</dict>
 		<dict>
 			<key>cell</key>
