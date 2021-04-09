@@ -282,6 +282,16 @@ return _specifiers;
 
 }
 
+
+-(void)miguelaka {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://www.reddit.com/user/Miguelaka95/"] options:@{} completionHandler:nil];
+
+
+}
+
+
 @end
 
 
