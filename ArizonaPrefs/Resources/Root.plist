@@ -90,15 +90,15 @@
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>default</key>
-			<real>1</real>
+			<real>0</real>
 			<key>defaults</key>
 			<string>com.luki.arizonaprefs</string>
 			<key>key</key>
 			<string>xValue</string>
 			<key>min</key>
-			<real>-500.0</real>
+			<real>-100.0</real>
 			<key>max</key>
-			<real>500.0</real>
+			<real>100.0</real>
 			<key>showValue</key>
 			<true/>
 			<key>isSegmented</key>
@@ -118,15 +118,15 @@
 			<key>cell</key>
 			<string>PSSliderCell</string>
 			<key>default</key>
-			<real>1</real>
+			<real>0</real>
 			<key>defaults</key>
 			<string>com.luki.arizonaprefs</string>
 			<key>key</key>
 			<string>yValue</string>
 			<key>min</key>
-			<real>-500.0</real>
+			<real>0.0</real>
 			<key>max</key>
-			<real>500.0</real>
+			<real>450.0</real>
 			<key>showValue</key>
 			<true/>
 			<key>isSegmented</key>

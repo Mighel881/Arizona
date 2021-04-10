@@ -268,7 +268,7 @@ return _specifiers;
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
-		_specifiers = [self loadSpecifiersFromPlistName:@"Contributors" target:self];
+		_specifiers = [self loadSpecifiersFromPlistName:@"AriContributors" target:self];
 	}
 
 	return _specifiers;
