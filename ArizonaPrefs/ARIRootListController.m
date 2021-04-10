@@ -131,7 +131,7 @@ return _specifiers;
     CGRect frame = self.table.bounds;
     frame.origin.y = -frame.size.height;
 
-    self.navigationController.navigationController.navigationBar.barTintColor = [UIColor clearColor];
+    //self.navigationController.navigationController.navigationBar.barTintColor = [UIColor clearColor];
     [self.navigationController.navigationController.navigationBar setShadowImage: [UIImage new]];
     self.navigationController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
