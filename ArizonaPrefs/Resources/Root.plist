@@ -151,8 +151,8 @@
 			<string>Contributors</string>
 		</dict>
 		<dict>
-		<key>cell</key>
-		<string>PSGroupCell</string>
+			<key>cell</key>
+			<string>PSGroupCell</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -167,6 +167,38 @@
 			<string>discord</string>
 			<key>label</key>
 			<string>Chat With Us On Discord</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>ArizonaTableCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.luki.arizonaprefs</string>
+			<key>action</key>
+			<string>paypal</string>
+			<key>label</key>
+			<string>Donate To Luki 🥰</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSButtonCell</string>
+			<key>cellClass</key>
+			<string>ArizonaTableCell</string>
+			<key>default</key>
+			<false/>
+			<key>defaults</key>
+			<string>com.luki.arizonaprefs</string>
+			<key>action</key>
+			<string>github</string>
+			<key>label</key>
+			<string>Source Code 🔥</string>
 		</dict>
 		<dict>
 			<key>cell</key>

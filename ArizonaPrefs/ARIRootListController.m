@@ -223,6 +223,24 @@ return _specifiers;
 }
 
 
+-(void)paypal {
+
+
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://paypal.me/Luki120"] options:@{} completionHandler:nil];
+
+
+}
+
+
+-(void)github {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://github.com/Luki120/Arizona"] options:@{} completionHandler:nil];
+
+
+}
+
+
 -(void)meredith {
 
 
@@ -239,6 +257,7 @@ return _specifiers;
 
 
 }
+
 
 @end
 
