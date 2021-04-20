@@ -41,20 +41,20 @@ CGFloat lockCoordinatesForY;
 
 static void loadWithoutAFuckingRespring() {
 
-	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-	NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
+    NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
+    NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
     poggers = prefs[@"poggers"] ? [prefs[@"poggers"] boolValue] : NO;
     style = prefs[@"style"] ? [prefs[@"style"] integerValue] : 2;
     alternatePosition = prefs[@"alternatePosition"] ? [prefs[@"alternatePosition"] boolValue] : NO;
     lockGlyphPosition = prefs[@"lockGlyphPosition"] ? [prefs[@"lockGlyphPosition"] boolValue] : NO;
     int xValue = prefs[@"xValue"] ? [prefs[@"xValue"] intValue] : 1;
-	coordinatesForX = (float)xValue;
-	int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
-	coordinatesForY = (float)yValue;
+    coordinatesForX = (float)xValue;
+    int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
+    coordinatesForY = (float)yValue;
     int lockXValue = prefs[@"lockXValue"] ? [prefs[@"lockXValue"] intValue] : 1;
-	lockCoordinatesForX = (float)lockXValue;
-	int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
-	lockCoordinatesForY = (float)lockYValue;
+    lockCoordinatesForX = (float)lockXValue;
+    int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
+    lockCoordinatesForY = (float)lockYValue;
 
 }
 
@@ -185,19 +185,19 @@ static void loadWithoutAFuckingRespring() {
 
 
     NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-	NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
+    NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
     poggers = prefs[@"poggers"] ? [prefs[@"poggers"] boolValue] : NO;
     style = prefs[@"style"] ? [prefs[@"style"] integerValue] : 2;
     alternatePosition = prefs[@"alternatePosition"] ? [prefs[@"alternatePosition"] boolValue] : NO;
     lockGlyphPosition = prefs[@"lockGlyphPosition"] ? [prefs[@"lockGlyphPosition"] boolValue] : NO;
     int xValue = prefs[@"xValue"] ? [prefs[@"xValue"] intValue] : 1;
-	coordinatesForX = (float)xValue;
-	int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
-	coordinatesForY = (float)yValue;
+    coordinatesForX = (float)xValue;
+    int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
+    coordinatesForY = (float)yValue;
     int lockXValue = prefs[@"lockXValue"] ? [prefs[@"lockXValue"] intValue] : 1;
-	lockCoordinatesForX = (float)lockXValue;
-	int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
-	lockCoordinatesForY = (float)lockYValue;
+    lockCoordinatesForX = (float)lockXValue;
+    int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
+    lockCoordinatesForY = (float)lockYValue;
 
 
 }
