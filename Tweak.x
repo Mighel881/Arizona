@@ -103,7 +103,7 @@ static void loadWithoutAFuckingRespring() {
 -(void)setFrame:(CGRect)frame {
 
 
-    if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Library/ControlCenter/Bundles/CClock.bundle/CClock"]) {
+    //if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Library/ControlCenter/Bundles/CClock.bundle/CClock"]) {
 
 
         if(alternatePosition) {
@@ -112,7 +112,7 @@ static void loadWithoutAFuckingRespring() {
             CGRect newFrame = CGRectMake(coordinatesForX, coordinatesForY, frame.size.width, frame.size.height);
 
 
-             %orig(newFrame);
+            %orig(newFrame);
         
 
         } else
