@@ -7,6 +7,9 @@
 @end
 
 
+@interface SBUIProudLockIconView : UIView
+-(void)updateLockGlyphPosition;
+@end
 
 
 @interface NSDistributedNotificationCenter : NSNotificationCenter
@@ -103,7 +106,7 @@ static void loadWithoutAFuckingRespring() {
 -(void)setFrame:(CGRect)frame {
 
 
-    //if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Library/ControlCenter/Bundles/CClock.bundle/CClock"]) {
+    //if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Library/PreferenceLoader/Preferences/cclockp.plist"]) {
 
 
         if(alternatePosition) {
@@ -122,7 +125,7 @@ static void loadWithoutAFuckingRespring() {
         loadWithoutAFuckingRespring();
 
 
-    }
+    //}
 
 
 }
@@ -131,11 +134,6 @@ static void loadWithoutAFuckingRespring() {
 %end
 
 
-
-
-@interface SBUIProudLockIconView : UIView
--(void)updateLockGlyphPosition;
-@end
 
 
 %hook SBUIProudLockIconView
