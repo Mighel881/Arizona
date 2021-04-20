@@ -51,10 +51,8 @@ static void loadWithoutAFuckingRespring() {
     coordinatesForX = (float)xValue;
     int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
     coordinatesForY = (float)yValue;
-    int lockXValue = prefs[@"lockXValue"] ? [prefs[@"lockXValue"] intValue] : 1;
-    lockCoordinatesForX = (float)lockXValue;
-    int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
-    lockCoordinatesForY = (float)lockYValue;
+    lockCoordinatesForX = prefs[@"lockXValue"] ? [prefs[@"lockXValue"] intValue] : 1;
+    lockCoordinatesForY = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
 
 }
 
@@ -66,32 +64,26 @@ static void loadWithoutAFuckingRespring() {
 
 -(void)setAlignmentPercent:(double)arg1 {
 
-
+	loadWithoutAFuckingRespring();
+	
     %orig;
 
     if (poggers && style == 2) {
         %orig(1);
-        loadWithoutAFuckingRespring();
 
     }
 
     else if(poggers && style == 1) {
 
         %orig(0);
-        loadWithoutAFuckingRespring();
 
     }
 
     else if(poggers && style == 0) {
 
         %orig(-1);
-        loadWithoutAFuckingRespring();
 
     }
-
-
-    loadWithoutAFuckingRespring();
-
 }
 
 
@@ -151,7 +143,7 @@ static void loadWithoutAFuckingRespring() {
         self.frame = CGRectMake(lockCoordinatesForX, lockCoordinatesForY, self.frame.size.width, self.frame.size.height);
 
 
-    }
+    } else self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 
 }
 
@@ -162,8 +154,8 @@ static void loadWithoutAFuckingRespring() {
     [self updateLockGlyphPosition];
 
 
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLockGlyphPosition) name:@"glyphUpdated" object:nil];
+	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+	[[NSDistributedNotificationCenter defaultCenter] addObserver:self selector:@selector(updateLockGlyphPosition) name:@"glyphUpdated" object:nil];
 
 }
 

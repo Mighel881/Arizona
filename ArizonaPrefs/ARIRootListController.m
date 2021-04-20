@@ -3,20 +3,6 @@
 
 
 
-static BOOL lockGlyphPosition;
-static BOOL alternatePosition;
-static BOOL poggers;
-static int style;
-
-
-CGFloat coordinatesForX;
-CGFloat coordinatesForY;
-CGFloat lockCoordinatesForX;
-CGFloat lockCoordinatesForY;
-
-
-
-
 static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonaprefs.plist";
 
 
@@ -24,26 +10,6 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 
 
 @implementation ARIRootListController
-
-
--(void)loadWithoutAFuckingRespring {
-
-	NSDictionary *dict = [NSDictionary dictionaryWithContentsOfFile:plistPath];
-	NSMutableDictionary *prefs = dict ? [dict mutableCopy] : [NSMutableDictionary dictionary];
-    poggers = prefs[@"poggers"] ? [prefs[@"poggers"] boolValue] : NO;
-	style = prefs[@"style"] ? [prefs[@"style"] integerValue] : 2;
-    alternatePosition = prefs[@"alternatePosition"] ? [prefs[@"alternatePosition"] boolValue] : NO;
-    lockGlyphPosition = prefs[@"lockGlyphPosition"] ? [prefs[@"lockGlyphPosition"] boolValue] : NO;
-    int xValue = prefs[@"xValue"] ? [prefs[@"xValue"] intValue] : 1;
-	coordinatesForX = (float)xValue;
-	int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
-	coordinatesForY = (float)yValue;
-    int lockXValue = prefs[@"lockXValue"] ? [prefs[@"lockXValue"] intValue] : 1;
-	lockCoordinatesForX = (float)lockXValue;
-	int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
-	lockCoordinatesForY = (float)lockYValue;
-
-}
 
 - (NSArray *)specifiers {
 	if (!_specifiers) {
@@ -192,12 +158,7 @@ return _specifiers;
     [settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:plistPath]];
     [settings setObject:value forKey:specifier.properties[@"key"]];
     [settings writeToFile:plistPath atomically:YES];
-    CFStringRef notificationName = (__bridge CFStringRef)specifier.properties[@"PostNotification"];
-    if (notificationName) {
-        [self loadWithoutAFuckingRespring];
-        [NSNotificationCenter.defaultCenter postNotificationName:@"glyphUpdated" object:NULL];
-    }
-
+	[NSDistributedNotificationCenter.defaultCenter postNotificationName:@"glyphUpdated" object:NULL];
     
 
     NSString *key = [specifier propertyForKey:@"key"];
