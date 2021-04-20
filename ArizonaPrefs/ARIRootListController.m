@@ -3,6 +3,7 @@
 
 
 
+static BOOL lockGlyphPosition;
 static BOOL alternatePosition;
 static BOOL poggers;
 static int style;
@@ -10,6 +11,8 @@ static int style;
 
 CGFloat coordinatesForX;
 CGFloat coordinatesForY;
+CGFloat lockCoordinatesForX;
+CGFloat lockCoordinatesForY;
 
 
 
@@ -30,10 +33,15 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
     poggers = prefs[@"poggers"] ? [prefs[@"poggers"] boolValue] : NO;
 	style = prefs[@"style"] ? [prefs[@"style"] integerValue] : 2;
     alternatePosition = prefs[@"alternatePosition"] ? [prefs[@"alternatePosition"] boolValue] : NO;
+    lockGlyphPosition = prefs[@"lockGlyphPosition"] ? [prefs[@"lockGlyphPosition"] boolValue] : NO;
     int xValue = prefs[@"xValue"] ? [prefs[@"xValue"] intValue] : 1;
 	coordinatesForX = (float)xValue;
 	int yValue = prefs[@"yValue"] ? [prefs[@"yValue"] intValue] : 1;
 	coordinatesForY = (float)yValue;
+    int lockXValue = prefs[@"lockXValue"] ? [prefs[@"lockXValue"] intValue] : 1;
+	lockCoordinatesForX = (float)lockXValue;
+	int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
+	lockCoordinatesForY = (float)lockYValue;
 
 }
 
@@ -179,7 +187,7 @@ return _specifiers;
 
 
 -(void)setPreferenceValue:(id)value specifier:(PSSpecifier*)specifier {
-    
+
     NSMutableDictionary *settings = [NSMutableDictionary dictionary];
     [settings addEntriesFromDictionary:[NSDictionary dictionaryWithContentsOfFile:plistPath]];
     [settings setObject:value forKey:specifier.properties[@"key"]];
@@ -187,7 +195,10 @@ return _specifiers;
     CFStringRef notificationName = (__bridge CFStringRef)specifier.properties[@"PostNotification"];
     if (notificationName) {
         [self loadWithoutAFuckingRespring];
+        [NSNotificationCenter.defaultCenter postNotificationName:@"glyphUpdated" object:NULL];
     }
+
+    
 
     NSString *key = [specifier propertyForKey:@"key"];
 
