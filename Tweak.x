@@ -136,6 +136,7 @@ static void loadWithoutAFuckingRespring() {
 
 
     loadWithoutAFuckingRespring();
+
     
     if(poggers && lockGlyphPosition) {
 
@@ -145,10 +146,11 @@ static void loadWithoutAFuckingRespring() {
 
     } else self.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
 
+
 }
 
 
--(void)didMoveToWindow {
+-(void)didMoveToSuperview {
 
     %orig;
     [self updateLockGlyphPosition];
@@ -159,7 +161,7 @@ static void loadWithoutAFuckingRespring() {
 
 }
 
--(void)didMoveToSuperview {
+-(void)layoutSubviews {
 
 
     %orig;

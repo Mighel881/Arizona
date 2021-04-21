@@ -149,12 +149,22 @@
 			<string>lockGlyphPosition</string>
 			<key>label</key>
 			<string>Lock Glyph Position</string>
+			<key>id</key>
+            <string>SWITCH_ID-3</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>id</key>
+            <string>GroupCell-4</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
 			<string>X Axis</string>
+			<key>id</key>
+			<string>LockXAxis</string>
 		</dict>	
 		<dict>
 			<key>cell</key>
@@ -173,12 +183,16 @@
 			<true/>
 			<key>isSegmented</key>
 			<true/>
+			<key>id</key>
+			<string>LockXValueID</string>
 		</dict>
 		<dict>
 			<key>cell</key>
 			<string>PSStaticTextCell</string>
 			<key>label</key>
 			<string>Y Axis</string>
+			<key>id</key>
+			<string>LockYAxis</string>
 		</dict>
 		<dict>
 			<key>cell</key>
@@ -197,6 +211,8 @@
 			<true/>
 			<key>isSegmented</key>
 			<true/>
+			<key>id</key>
+			<string>LockYValueID</string>
 		</dict>
 		<dict>
 			<key>cell</key>

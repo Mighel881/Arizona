@@ -14,7 +14,7 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
-		NSArray *chosenIDs = @[@"GroupCell-1", @"SegmentCell", @"GroupCell-3", @"XAxisID", @"XValueID", @"YAxisID", @"YValueID"];
+		NSArray *chosenIDs = @[@"GroupCell-1", @"SegmentCell", @"GroupCell-3", @"XAxisID", @"XValueID", @"YAxisID", @"YValueID", @"GroupCell-4", @"LockXAxis", @"LockXValueID", @"LockYAxis", @"LockYValueID"];
 		self.savedSpecifiers = (self.savedSpecifiers) ?: [[NSMutableDictionary alloc] init];
 		for(PSSpecifier *specifier in _specifiers) {
 			if([chosenIDs containsObject:[specifier propertyForKey:@"id"]]) {
@@ -47,6 +47,13 @@ return _specifiers;
     else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-3"]]) {
         [self insertContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-3"], self.savedSpecifiers[@"XAxisID"], self.savedSpecifiers[@"XValueID"], self.savedSpecifiers[@"YAxisID"], self.savedSpecifiers[@"YValueID"]] afterSpecifierID:@"SWITCH_ID-2" animated:NO];
     }
+
+    if (![[self readPreferenceValue:[self specifierForID:@"SWITCH_ID-3"]] boolValue]) {
+        [self removeContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-4"], self.savedSpecifiers[@"LockXAxis"], self.savedSpecifiers[@"LockXValueID"], self.savedSpecifiers[@"LockYAxis"], self.savedSpecifiers[@"LockYValueID"]] animated:NO];
+    } 
+    else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-4"]]) {
+        [self insertContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-4"], self.savedSpecifiers[@"LockXAxis"], self.savedSpecifiers[@"LockXValueID"], self.savedSpecifiers[@"LockYAxis"], self.savedSpecifiers[@"LockYValueID"]] afterSpecifierID:@"SWITCH_ID-3" animated:NO];
+    }
 }
 
 
@@ -66,8 +73,9 @@ return _specifiers;
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
     self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.titleLabel.text = @"1.0";
-    self.titleLabel.textColor = [UIColor whiteColor];
+    self.titleLabel.text = @"2.0";
+    if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark) self.titleLabel.textColor = [UIColor whiteColor];
+	else if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleLight) self.titleLabel.textColor = [UIColor blackColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
     [self.navigationItem.titleView addSubview:self.titleLabel];
 
@@ -138,9 +146,17 @@ return _specifiers;
 
 
 -(void)viewWillDisappear:(BOOL)animated {
+
     [super viewWillDisappear:animated];
 
-    [self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];
+  
+    if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark)
+
+        [self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+
+	else if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleLight)
+
+        [self.navigationController.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor blackColor]}];	
 
 }
 
@@ -182,6 +198,16 @@ return _specifiers;
         } 
         else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-3"]]) {
             [self insertContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-3"], self.savedSpecifiers[@"XAxisID"], self.savedSpecifiers[@"XValueID"], self.savedSpecifiers[@"YAxisID"], self.savedSpecifiers[@"YValueID"]] afterSpecifierID:@"SWITCH_ID-2" animated:YES];
+        }
+    }
+
+    if([key isEqualToString:@"lockGlyphPosition"]) {
+        
+        if (![value boolValue]) {
+            [self removeContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-4"], self.savedSpecifiers[@"LockXAxis"], self.savedSpecifiers[@"LockXValueID"], self.savedSpecifiers[@"LockYAxis"], self.savedSpecifiers[@"LockYValueID"]] animated:YES];
+        } 
+        else if (![self containsSpecifier:self.savedSpecifiers[@"GroupCell-4"]]) {
+            [self insertContiguousSpecifiers:@[self.savedSpecifiers[@"GroupCell-4"], self.savedSpecifiers[@"LockXAxis"], self.savedSpecifiers[@"LockXValueID"], self.savedSpecifiers[@"LockYAxis"], self.savedSpecifiers[@"LockYValueID"]] afterSpecifierID:@"SWITCH_ID-3" animated:YES];
         }
     }
 }
@@ -251,6 +277,15 @@ return _specifiers;
 
 
 	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://twitter.com/Lukii120"] options:@{} completionHandler:nil];
+
+
+}
+
+
+-(void)wizard {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://twitter.com/RuntimeOverflow"] options:@{} completionHandler:nil];
 
 
 }
