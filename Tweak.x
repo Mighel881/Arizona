@@ -59,6 +59,9 @@ static void loadWithoutAFuckingRespring() {
 
 
 
+%group Arizona
+
+
 %hook SBFLockScreenDateView
 
 
@@ -98,34 +101,32 @@ static void loadWithoutAFuckingRespring() {
 -(void)setFrame:(CGRect)frame {
 
 
-    //if(![[NSFileManager defaultManager] fileExistsAtPath:@"/Library/PreferenceLoader/Preferences/cclockp.plist"]) {
+    if(alternatePosition) {
 
 
-        if(alternatePosition) {
+        CGRect newFrame = CGRectMake(coordinatesForX, coordinatesForY, frame.size.width, frame.size.height);
 
 
-            CGRect newFrame = CGRectMake(coordinatesForX, coordinatesForY, frame.size.width, frame.size.height);
-
-
-            %orig(newFrame);
+        %orig(newFrame);
         
 
-        } else
+    } else
 
 
         %orig;
         loadWithoutAFuckingRespring();
 
 
-    //}
-
-
 }
 
 
 %end
+%end
 
 
+
+
+%group ArizonaLockGlyph
 
 
 %hook SBUIProudLockIconView
@@ -171,7 +172,7 @@ static void loadWithoutAFuckingRespring() {
 }
 
 %end
-
+%end
 
 
 
@@ -192,6 +193,15 @@ static void loadWithoutAFuckingRespring() {
     lockCoordinatesForX = (float)lockXValue;
     int lockYValue = prefs[@"lockYValue"] ? [prefs[@"lockYValue"] intValue] : 1;
     lockCoordinatesForY = (float)lockYValue;
+
+
+    %init(Arizona);
+
+
+    if(![[NSFileManager defaultManager] fileExistsAtPath:@"Library/MobileSubstrate/DynamicLibraries/LatchKey.dylib"])
+
+
+        %init(ArizonaLockGlyph);
 
 
 }
