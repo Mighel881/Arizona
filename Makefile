@@ -5,8 +5,6 @@ FINALPACKAGE = 1
 
 TARGET := iphone:clang:latest:latest
 
-THEOS_DEVICE_IP = 192.168.0.7
-
 include $(THEOS)/makefiles/common.mk
 
 TWEAK_NAME = Arizona
