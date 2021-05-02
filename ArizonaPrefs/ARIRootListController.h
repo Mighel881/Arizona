@@ -29,5 +29,9 @@
 @end
 
 
+@interface OtherLinksRootListController : PSListController
+@end
+
+
 @interface ArizonaTableCell : PSTableCell
 @end

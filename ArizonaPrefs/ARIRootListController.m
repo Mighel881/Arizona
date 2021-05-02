@@ -11,6 +11,7 @@ static NSString *plistPath = @"/var/mobile/Library/Preferences/com.luki.arizonap
 
 @implementation ARIRootListController
 
+
 - (NSArray *)specifiers {
 	if (!_specifiers) {
 		_specifiers = [self loadSpecifiersFromPlistName:@"Root" target:self];
@@ -73,7 +74,7 @@ return _specifiers;
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
     self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.titleLabel.text = @"3.0";
+    self.titleLabel.text = @"3.1";
     if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark) self.titleLabel.textColor = [UIColor whiteColor];
 	else if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleLight) self.titleLabel.textColor = [UIColor blackColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
@@ -106,6 +107,7 @@ return _specifiers;
 }
 
 
+
 -(void)viewWillAppear:(BOOL)animated {
 
     [super viewWillAppear:animated];
@@ -116,6 +118,7 @@ return _specifiers;
     //self.navigationController.navigationController.navigationBar.barTintColor = [UIColor clearColor];
     [self.navigationController.navigationController.navigationBar setShadowImage: [UIImage new]];
     self.navigationController.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+
 }
 
  
@@ -239,6 +242,15 @@ return _specifiers;
 }
 
 
+-(void)april {
+
+
+	[[UIApplication sharedApplication] openURL:[NSURL URLWithString: @"https://repo.twickd.com/package/com.twickd.luki120.april"] options:@{} completionHandler:nil];
+
+
+}
+
+
 -(void)meredith {
 
 
@@ -317,6 +329,22 @@ return _specifiers;
 
 }
 
+
+@end
+
+
+
+
+@implementation OtherLinksRootListController
+
+
+- (NSArray *)specifiers {
+	if (!_specifiers) {
+		_specifiers = [self loadSpecifiersFromPlistName:@"Other Links" target:self];
+	}
+
+	return _specifiers;
+}
 
 @end
 

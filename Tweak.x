@@ -65,7 +65,7 @@ static void loadWithoutAFuckingRespring() {
 %hook SBFLockScreenDateView
 
 
--(void)setAlignmentPercent:(double)arg1 {
+-(void)setAlignmentPercent:(double)arg1 { // fixed positions
 
 	loadWithoutAFuckingRespring();
 	
@@ -98,7 +98,7 @@ static void loadWithoutAFuckingRespring() {
 %hook SBFLockScreenDateView
 
 
--(void)setFrame:(CGRect)frame {
+-(void)setFrame:(CGRect)frame { // custom position
 
 
     if(alternatePosition) {
@@ -133,13 +133,13 @@ static void loadWithoutAFuckingRespring() {
 
 %new
 
--(void)updateLockGlyphPosition { // move the FaceID lock glyph
+-(void)updateLockGlyphPosition { // self explanatory
 
 
     loadWithoutAFuckingRespring();
 
     
-    if(poggers && lockGlyphPosition) {
+    if(lockGlyphPosition) {
 
 
         self.frame = CGRectMake(lockCoordinatesForX, lockCoordinatesForY, self.frame.size.width, self.frame.size.height);
@@ -151,7 +151,7 @@ static void loadWithoutAFuckingRespring() {
 }
 
 
--(void)didMoveToSuperview {
+-(void)didMoveToSuperview { // add notification observers
 
     %orig;
     [self updateLockGlyphPosition];
@@ -162,7 +162,7 @@ static void loadWithoutAFuckingRespring() {
 
 }
 
--(void)layoutSubviews {
+-(void)layoutSubviews { // ehh I don't like this either, but just updating a view.
 
 
     %orig;
