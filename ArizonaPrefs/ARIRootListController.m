@@ -74,7 +74,7 @@ return _specifiers;
     self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0,10,10)];
     self.titleLabel.font = [UIFont boldSystemFontOfSize:17];
     self.titleLabel.translatesAutoresizingMaskIntoConstraints = NO;
-    self.titleLabel.text = @"3.1";
+    self.titleLabel.text = @"3.2";
     if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleDark) self.titleLabel.textColor = [UIColor whiteColor];
 	else if ([[self traitCollection] userInterfaceStyle] == UIUserInterfaceStyleLight) self.titleLabel.textColor = [UIColor blackColor];
     self.titleLabel.textAlignment = NSTextAlignmentCenter;
